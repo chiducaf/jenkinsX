@@ -1,13 +1,4 @@
-From ringcentral/jdk
-
-MAINTAINER ="Atos"
-
-LABEL "customized"="Customization image for gitlab using with apache2 service"
-
-ARG SSL_KEYSTORE_PASSWORD
-
-USER root
-
-RUN apk update  
-
-CMD ["-g"]
+From tomcat:8.0.51-jre8-alpine
+RUN rm -rf /usr/local/tomcat/webapps/*
+COPY ./EmployeeManagementSystem.war /usr/local/tomcat/webapps/EmployeeManagementSystem.war
+CMD ["catalina.sh","run"]
